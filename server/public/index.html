@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>hello</h1>
+    <pre id="output"></pre>
+    <script type="module">
+      console.log('hello js')
+      const webSocket = new WebSocket('ws://localhost:8080')
+      webSocket.onopen = () => {
+        webSocket.send(
+          JSON.stringify({
+            command: 'readFile',
+            path: '/tmp/electron-server/package.json',
+          }),
+        )
+      }
+
+      webSocket.onmessage = ({ data }) => {
+        console.log(data)
+        const { text } = JSON.parse(data)
+        document.getElementById('output').textContent = text
+      }
+    </script>
+  </body>
+</html>

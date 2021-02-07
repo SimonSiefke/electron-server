@@ -2,15 +2,16 @@
   "name": "electron-server",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.cjs",
+  "main": "src/server.js",
   "type": "module",
   "scripts": {
-    "start": "electron ."
+    "start": "node src/server.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "electron": "^11.2.3"
+    "express": "^4.17.1",
+    "ws": "^7.4.3"
   }
 }
