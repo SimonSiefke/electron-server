@@ -15,7 +15,7 @@ const createWindow = () => {
 const __initialize__ = async () => {
   await app.whenReady()
 
-  const childProcess = spawn('node', ['server/src/server.js'], {
+  const childProcess = spawn('node', ['server/bin/server.js'], {
     stdio: 'inherit',
   })
 

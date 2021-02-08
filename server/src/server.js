@@ -1,16 +1,11 @@
-import { performance } from 'perf_hooks'
-const s = performance.now()
 import express from 'express'
-import ws from 'ws'
-import http from 'http'
-import WebSocket from 'ws'
 import { readFile } from 'fs/promises'
+import http from 'http'
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
+import WebSocket from 'ws'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-
-console.log(performance.now() - s)
 
 const app = express()
 
@@ -47,6 +42,4 @@ wss.on('connection', function connection(ws) {
   ws.send('something')
 })
 
-server.listen(8080, () => {
-  console.log(performance.now() - s)
-})
+export { server }
